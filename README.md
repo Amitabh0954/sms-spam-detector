@@ -64,5 +64,6 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/sms-spam-detector.git
-   cd sms-spam-detector
+  git clone https://github.com/Amitabh0954/plant-disease-recognition.git
+cd plant-disease-recognition
+
