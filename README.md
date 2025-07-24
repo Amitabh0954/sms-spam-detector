@@ -10,7 +10,7 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Languages:** Python 3  
 - **Libraries:** 
@@ -39,7 +39,7 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 - **Source:** [UCI SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
 - **Format:** CSV with two columns: `label` (spam/ham) and `message`
@@ -60,7 +60,7 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 1. Clone the repository:
    ```bash
