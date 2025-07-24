@@ -1,16 +1,16 @@
-# 📩 SMS Spam Detection using MNB, LSTM, GRU & BiLSTM
+#  SMS Spam Detection using MNB, LSTM, GRU & BiLSTM
 
 This project focuses on detecting spam messages in SMS texts using various machine learning and deep learning models — namely, **Multinomial Naive Bayes (MNB)**, **LSTM**, **GRU**, and **Bidirectional LSTM (BiLSTM)**. It demonstrates a comparative approach to evaluate performance and accuracy across traditional and neural network-based models.
 
 ---
 
-## 🔍 Problem Statement
+##  Problem Statement
 
 With the ever-growing number of unsolicited spam messages, there’s a need for an intelligent system that can differentiate between spam and ham (legitimate) SMS messages. This project aims to build such a system using different models and evaluate their performance on key metrics like **accuracy**, **precision**, **recall**, and **F1-score**.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 - **Languages:** Python 3  
 - **Libraries:** 
@@ -22,7 +22,7 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 ---
 
-## 🧠 Models Implemented
+##  Models Implemented
 
 1. **Multinomial Naive Bayes (MNB):**
    - Classical ML model using TF-IDF vectorization.
@@ -47,7 +47,7 @@ With the ever-growing number of unsolicited spam messages, there’s a need for 
 
 ---
 
-## 📈 Performance Highlights
+##  Performance Highlights
 
 | Model         | Accuracy | Precision | Recall | F1 Score |
 |---------------|----------|-----------|--------|----------|
