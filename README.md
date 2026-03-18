@@ -1,69 +1,186 @@
-#  SMS Spam Detection using MNB, LSTM, GRU & BiLSTM
+# SpamShield — SMS Spam Detector
 
-This project focuses on detecting spam messages in SMS texts using various machine learning and deep learning models — namely, **Multinomial Naive Bayes (MNB)**, **LSTM**, **GRU**, and **Bidirectional LSTM (BiLSTM)**. It demonstrates a comparative approach to evaluate performance and accuracy across traditional and neural network-based models.
+A production-grade SMS spam detection system combining classical ML and deep learning models with a Groq-powered AI explainability layer.
 
----
-
-##  Problem Statement
-
-With the ever-growing number of unsolicited spam messages, there’s a need for an intelligent system that can differentiate between spam and ham (legitimate) SMS messages. This project aims to build such a system using different models and evaluate their performance on key metrics like **accuracy**, **precision**, **recall**, and **F1-score**.
+**Live Demo:** _coming soon_ · **Backend:** FastAPI · **Frontend:** React + Vite · **LLM:** LLaMA 3.3 70B via Groq
 
 ---
 
-##  Tech Stack
+## Overview
 
-- **Languages:** Python 3  
-- **Libraries:** 
-  - `scikit-learn`
-  - `NLTK`
-  - `TensorFlow` / `Keras`
-  - `NumPy`, `Pandas`, `Matplotlib`, `Seaborn`
-- **Notebook:** Jupyter (`.ipynb`)
+SpamShield detects spam in SMS messages using 6 trained models — from Multinomial Naive Bayes to Bidirectional LSTM — and explains every prediction using a Groq-hosted LLM. It includes a full-stack web interface with batch scanning, model comparison, and evasion detection.
 
 ---
 
-##  Models Implemented
+## Features
 
-1. **Multinomial Naive Bayes (MNB):**
-   - Classical ML model using TF-IDF vectorization.
-   - Fast and effective for simple NLP tasks.
-
-2. **LSTM (Long Short-Term Memory):**
-   - Captures long-term dependencies in text sequences.
-
-3. **GRU (Gated Recurrent Unit):**
-   - Similar to LSTM but more lightweight.
-
-4. **Bidirectional LSTM (BiLSTM):**
-   - Reads sequences both forwards and backwards for better context.
+- **6 ML/DL models** — MNB (TF-IDF & Count), SimpleRNN, LSTM, GRU, BiLSTM
+- **AI Explainability** — LLaMA 3.3 70B explains every prediction via Groq
+- **Evasion Detection** — detects obfuscation tricks spammers use to bypass filters
+- **Batch Scanning** — scan hundreds of messages at once with CSV export
+- **Model Comparison** — side-by-side metrics with sortable leaderboard
+- **GloVe Embeddings** — 300-dimensional pretrained word vectors
+- **Custom Thresholds** — per-model optimized decision boundaries
 
 ---
 
-##  Dataset
+## Model Performance
 
-- **Source:** [UCI SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
-- **Format:** CSV with two columns: `label` (spam/ham) and `message`
-- **Preprocessing:** Lowercasing, stopword removal, stemming, tokenization, padding
+| Model | Accuracy | F1 | Precision | Recall | ROC-AUC |
+|---|---|---|---|---|---|
+| MNB · TF-IDF | 98.6% | 94.4% | 99.2% | 90.1% | 99.4% |
+| MNB · Count | 98.6% | 94.5% | 97.6% | 91.6% | 98.5% |
+| Simple RNN | 98.1% | 92.4% | 91.7% | 93.1% | 99.2% |
+| LSTM | 98.5% | 93.7% | 97.5% | 90.1% | 99.5% |
+| GRU | 98.6% | 94.4% | 98.3% | 90.8% | 99.6% |
+| **BiLSTM** | **98.2%** | **92.8%** | **92.4%** | **93.1%** | **99.4%** |
 
----
-
-##  Performance Highlights
-
-| Model         | Accuracy | Precision | Recall | F1 Score |
-|---------------|----------|-----------|--------|----------|
-| Naive Bayes   | ~98.5%   | High      | High   | High     |
-| LSTM          | ~98%     | High      | High   | High     |
-| GRU           | ~98.3%   | High      | High   | High     |
-| BiLSTM        | **~98.5%** | High     | High   | High     |
-
-> 🔧 Note: Metrics may vary slightly based on random seed and dataset split.
+> Trained on the [UCI SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset) · 5,574 messages · 87/13 ham/spam split
 
 ---
 
-##  How to Run
+## Architecture
 
-1. Clone the repository:
-   ```bash
-  git clone https://github.com/Amitabh0954/sms-spam-detector.git
-   cd sms-spam-detector
+```
+sms-spam-detector/
+├── app.py                  # FastAPI backend — all endpoints
+├── intelligence.py         # Groq LLM layer (explain, analyze, evasion)
+├── vocab.py                # Custom vocabulary + GloVe loader
+├── artifacts/
+│   ├── bilstm.pt           # Trained PyTorch model weights
+│   ├── lstm.pt
+│   ├── gru.pt
+│   ├── simplernn.pt
+│   ├── mnb_tfidf.pkl       # Sklearn MNB classifiers
+│   ├── mnb_count.pkl
+│   ├── tfidf_vectorizer.pkl
+│   ├── count_vectorizer.pkl
+│   ├── vocab.pkl
+│   ├── emb_matrix.npy      # GloVe embedding matrix
+│   ├── thresholds.json     # Per-model optimal thresholds
+│   └── results.csv         # Training metrics
+└── sms-spam-frontend/      # React + Vite frontend
+    ├── src/
+    │   ├── pages/          # Predict, Batch, Models, Intelligence
+    │   ├── components/     # Layout, PredictResult, ExplainCard
+    │   └── lib/api.js      # API client
+    └── vite.config.js      # Dev proxy → localhost:8000
+```
 
+---
+
+## Tech Stack
+
+**Backend**
+- Python 3.11, FastAPI, Uvicorn
+- PyTorch (RNN models), Scikit-learn (MNB)
+- NLTK, NumPy, Pandas
+- Groq SDK (LLaMA 3.3 70B)
+- GloVe 6B 300d embeddings
+
+**Frontend**
+- React 18, Vite
+- React Router DOM v6
+- Tailwind CSS v3
+
+---
+
+## Local Setup
+
+### Backend
+
+```bash
+git clone https://github.com/Amitabh0954/sms-spam-detector.git
+cd sms-spam-detector
+
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Mac/Linux
+
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+```
+GROQ_API_KEY=gsk_your_key_here
+```
+
+Get a free Groq API key at [console.groq.com](https://console.groq.com).
+
+```bash
+uvicorn app:app --reload
+# API running at http://localhost:8000
+# Docs at http://localhost:8000/docs
+```
+
+### Frontend
+
+```bash
+cd sms-spam-frontend
+npm install
+npm run dev
+# App running at http://localhost:5173
+```
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/predict` | Single message prediction |
+| POST | `/predict/batch` | Batch prediction (up to 100 messages) |
+| POST | `/intelligence/explain` | AI explanation of a prediction |
+| POST | `/intelligence/analyze` | AI batch analysis |
+| POST | `/intelligence/rewrite-check` | Spam evasion detection |
+| GET | `/models` | All models with metrics |
+| GET | `/models/{name}` | Single model info |
+| GET | `/metrics` | Raw training metrics |
+| GET | `/health` | API health check |
+
+### Example
+
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"text": "WINNER!! You have been selected for a cash prize. Call now!", "model": "bilstm"}'
+```
+
+```json
+{
+  "label": "spam",
+  "probability": 0.9821,
+  "confidence": 0.9821,
+  "threshold": 0.49,
+  "latency_ms": 12.4
+}
+```
+
+---
+
+## Model Training
+
+The models were trained in the Jupyter notebook:
+
+```bash
+jupyter notebook sms-spam-detection-mnb-lstm-gru-bi-lstm.ipynb
+```
+
+Training pipeline:
+1. Preprocess text (lowercase, URL/number tokens, stopword removal)
+2. Build vocabulary from training corpus
+3. Load GloVe 6B 300d embeddings → embedding matrix
+4. Train each model with optimized thresholds via F1 maximization
+5. Export artifacts to `artifacts/`
+
+---
+
+<!-- ## Screenshots
+
+> _Add screenshots of the Predict, Batch, Models, and Intelligence pages here_
+
+--- -->
+
+## License
+
+MIT
