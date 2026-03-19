@@ -1,17 +1,4 @@
-"""
-SMS Spam Detector — FastAPI Backend (Groq Enabled)
-=================================================
-Endpoints:
-  POST /predict
-  POST /predict/batch
-  POST /intelligence/explain
-  POST /intelligence/analyze
-  POST /intelligence/rewrite-check
-  GET  /models
-  GET  /models/{name}
-  GET  /metrics
-  GET  /health
-"""
+
 
 from __future__ import annotations
 
@@ -41,7 +28,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 _groq_key = os.getenv("GROQ_API_KEY")
-print(f"🔑 GROQ KEY LOADED: {repr(_groq_key)}")
+
 _intel = Intelligence(api_key=_groq_key)
 
 logging.basicConfig(

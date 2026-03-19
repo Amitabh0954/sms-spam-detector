@@ -1,29 +1,3 @@
-"""
-SMS Spam Detection  —  FIXED VERSION
-=====================================
-Key fixes over original:
-  1. Optimal threshold tuning per model (not hard-coded 0.5)
-  2. Unfreezing embeddings after 2 epochs (fine-tuning)
-  3. Gradient clipping to stabilise RNN training
-  4. Focal loss option for extreme class imbalance
-  5. Deeper BiLSTM head (fc1 applied to ALL models, not just BiLSTM)
-  6. Attention pooling instead of last-hidden-state
-  7. Label-smoothing on BCE to avoid over-confidence
-  8. LR scheduler (ReduceLROnPlateau)
-  9. Best threshold logged and saved per model
-
-Models: MultinomialNB (TF-IDF / CountVectorizer), SimpleRNN, LSTM, GRU, Bi-LSTM
-Embeddings: GloVe 300-d (pre-trained, fine-tuned after warm-up)
-Backend: PyTorch (no TensorFlow dependency)
-
-Usage
------
-Train:
-    python sms_spam_detection.py --data spam.csv --glove glove.6B.300d.txt
-
-Predict:
-    python sms_spam_detection.py --predict "Win a free iPhone now!" --model bilstm
-"""
 
 from __future__ import annotations
 
