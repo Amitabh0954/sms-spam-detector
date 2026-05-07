@@ -1,15 +1,4 @@
-"""
-intelligence_groq.py — Agentic AI layer using Groq (Open Source LLMs)
-=====================================================================
-Replaces Claude API with Groq (LLaMA 3.3 / Mixtral).
 
-Features:
-  1. explain_prediction
-  2. analyze_batch
-  3. detect_evasion
-
-All methods are async and return structured JSON-ready dicts.
-"""
 
 from __future__ import annotations
 

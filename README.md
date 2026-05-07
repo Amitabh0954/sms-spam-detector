@@ -39,7 +39,7 @@ SpamShield detects spam in SMS messages using 6 trained models — from Multinom
 
 ---
 
-## Architecture
+## Project Structure
 
 ```
 sms-spam-detector/
@@ -120,7 +120,16 @@ cd sms-spam-frontend
 npm install
 npm run dev
 # App running at http://localhost:5173
+# Proxies /api/* → http://localhost:8000
 ```
+
+> Make sure the FastAPI backend is running on port 8000 before starting the frontend.
+
+### Pages
+- `/` — Single message prediction
+- `/batch` — Multi-message batch scan
+- `/models` — Model comparison & metrics
+- `/explain` — AI explainability (Groq LLaMA 3.3 70B)
 
 ---
 
@@ -174,12 +183,6 @@ Training pipeline:
 5. Export artifacts to `artifacts/`
 
 ---
-
-<!-- ## Screenshots
-
-> _Add screenshots of the Predict, Batch, Models, and Intelligence pages here_
-
---- -->
 
 ## License
 

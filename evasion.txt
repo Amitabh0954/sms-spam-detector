@@ -1,0 +1,23 @@
+"Fr33 pr1ze! C1ick h3re to cl41m your $500 g1ft c4rd NOW!"
+"W.i.n a f.r.e.e i.P.h.o.n.e today!!"
+"CONGRATULATIONS... you've been selected... claim... your... reward"
+
+Unicode tricks:
+
+"Ƒree ₱rize! You've WON a gíft cárd!"
+"You have WOΝ £1000 (using Greek Ν instead of N)"
+
+Whitespace/symbol padding:
+
+"F R E E  M O N E Y  click now"
+"Get$$free$$cash$$today$$limited$$offer"
+
+Legitimate-looking but suspicious:
+
+"Hey, just following up on that prize you registered for last week 😊"
+"Your account needs verification, tap the link before it expires"
+
+Actual ham (should show low evasion risk):
+
+"Can you pick up milk on your way home?"
+"Meeting rescheduled to 3pm tomorrow"

@@ -28,6 +28,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 _groq_key = os.getenv("GROQ_API_KEY")
+print("KEY LOADED:", os.getenv("GROQ_API_KEY", "NOT FOUND")[:10])
 
 _intel = Intelligence(api_key=_groq_key)
 
