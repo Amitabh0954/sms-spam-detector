@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background-color: #0a0b0f;
+    color: #e2e8f0;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #111318; }
+  ::-webkit-scrollbar-thumb { background: #1e2130; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4f9cf9; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl p-6;
+  }
+  .btn-primary {
+    @apply bg-accent text-bg font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-400 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed text-sm;
+  }
+  .btn-ghost {
+    @apply border border-border text-text-dim px-5 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-all duration-200 text-sm;
+  }
+  .input {
+    @apply bg-bg border border-border rounded-lg px-4 py-2.5 text-text placeholder-muted focus:outline-none focus:border-accent transition-colors text-sm w-full;
+  }
+  .textarea {
+    @apply bg-bg border border-border rounded-lg px-4 py-3 text-text placeholder-muted focus:outline-none focus:border-accent transition-colors text-sm w-full resize-none font-mono;
+  }
+  .badge-spam {
+    @apply bg-red-500/10 text-danger border border-red-500/20 text-xs font-mono px-2 py-0.5 rounded-full;
+  }
+  .badge-ham {
+    @apply bg-green-500/10 text-success border border-green-500/20 text-xs font-mono px-2 py-0.5 rounded-full;
+  }
+  .label {
+    @apply text-text-dim text-xs font-mono uppercase tracking-widest mb-1.5 block;
+  }
+}
+
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.glow-accent { box-shadow: 0 0 20px rgba(79, 156, 249, 0.15); }
+.glow-danger { box-shadow: 0 0 20px rgba(249, 79, 79, 0.15); }
+.glow-success { box-shadow: 0 0 20px rgba(79, 249, 148, 0.15); }
+
+.prob-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: #1e2130;
+  overflow: hidden;
+}
+.prob-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* @keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+} */
+/* .scanline {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(79,156,249,0.08), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+} */
